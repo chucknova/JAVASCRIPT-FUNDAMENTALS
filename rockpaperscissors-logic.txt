@@ -1,0 +1,25 @@
+Rock Paper Scissors Logic:
+1. Computer makes a choice either rock, paper or scissors
+2. Human makes a choice too
+3. We compare both choices
+4. If computer choice strikes out human's choice, give computer score +1
+5. If human choice strikes out computer choice, give computer score +1
+6. After 5 trials, game over
+7. Assign winner
+
+Pseudo code
+1. Set computer score to 0
+2. Set human score to 0, set trial count to 0
+3. Define rock, paper, scissors values for computer
+4. Create a function for the computer to choose a value
+5. Store the value somewhere
+6. Create another function to collect human's choice
+7. Store the value same place we stored computer's choice
+8. If computer choice is rock and human is scissors, computer score increases by 1
+9. If computer choice is paper and human is rock, computer score increases by 1
+10.If computer choice is scissors and human is paper, computer score increases by 1
+11.Same for human choice
+12. If they have same choice, allow them try again till one score increases
+12. Increase trial count by 1
+13. If trial count is equal to 5 end the game 
+14. Check and compare total scores and assign winner

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors</title>
+</head>
+
+<body>
+    <input type="number" name="" id="humanInput" placeholder="Enter 1 for rock, 2 for paper, 3 for scissors"
+        style="width: 60%; height: 40px;">
+    <button style="height: 40px; width: 120px;" onclick="humanChoice()">Enter</button>
+    <script>
+        let computerScore = 0;
+        let humanScore = 0;
+        let trialCount = 0;
+        let optionEvaluator = []
+
+        console.log(computerScore, humanScore, trialCount);
+
+        //Define rock, paper, scissors values for computer
+        let gameOptions = ['rock', 'paper', 'scissors']
+        let rock = gameOptions[0];
+        let paper = gameOptions[1];
+        let scissors = gameOptions[2];
+
+        //Function for the computer to choose a value
+        function computerChoice(rock, paper, scissors) {
+            let randomIndex = Math.floor(Math.random() * gameOptions.length)
+            optionEvaluator.push(gameOptions[randomIndex]) //already chosen
+        }
+
+        //Function for the human to choose a value
+        function humanChoice() {
+            let humanValue = document.getElementById("humanInput").value;
+            if (humanValue >= 4 || humanValue < 1) {
+                alert("Enter values between 1 and 3")
+            }
+            else {
+                optionEvaluator.push(gameOptions[humanValue - 1])
+                console.log(optionEvaluator);
+                if ((optionEvaluator[0] == 'rock' && optionEvaluator[1] == 'scissors') || (optionEvaluator[0] == 'paper' && optionEvaluator[1] == 'rock') || (optionEvaluator[0] == 'scissors' && optionEvaluator[1] == 'paper')) {
+                    computerScore += 1
+                    alert('Computer wins, negro! ' + 'Your Score: ' + humanScore + ' Computer Score: ' + computerScore);
+                } else if (((optionEvaluator[1] == 'rock' && optionEvaluator[0] == 'scissors') || (optionEvaluator[1] == 'paper' && optionEvaluator[0] == 'rock') || (optionEvaluator[1] == 'scissors' && optionEvaluator[0] == 'paper'))) {
+                    humanScore += 1
+                    alert('You win, negro! ' + 'Your Score: ' + humanScore + ' Computer Score: ' + computerScore);
+                }
+                else if (((optionEvaluator[1] == 'rock' && optionEvaluator[0] == 'rock') || (optionEvaluator[1] == 'paper' && optionEvaluator[0] == 'paper') || (optionEvaluator[1] == 'scissors' && optionEvaluator[0] == 'scissors'))) {
+                    humanScore += 0
+                    computerScore += 0
+                    alert('Its a draw, negro! ' + 'Your Score: ' + humanScore + ' Computer Score: ' + computerScore);
+                }
+                optionEvaluator.length = 0;
+                //replay
+                if (humanScore + computerScore == 5) {
+                    humanScore > computerScore ? alert("sigh... you win Negro!") : alert ("You Lose! bitch ahh negro")
+                } else {
+                    computerChoice();
+                }
+            }
+        }
+
+        computerChoice();
+        
+
+
+    </script>
+</body>
+
+</html>
