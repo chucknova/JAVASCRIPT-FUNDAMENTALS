@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Exercises
+        // 1. Write the function camelize(str) that changes dash-separated words like “my-short-string” into camel-cased “myShortString”.
+        function camelize(testName) {
+            let testArr = []
+
+            //decompose string and push into array
+            for (let i = 0; i < testName.length; i++) {
+                const element = testName[i];
+                testArr.push(element);
+            }
+
+            //transform characters next to '-' into uppercase
+            testName = ''
+            for (let i = 0; i < testArr.length; i++) {
+                if (testArr[i] == '-') {
+                    testArr[i + 1] = testArr[i + 1].toUpperCase()
+                }
+
+                testName += testArr[i]
+            }
+
+            return testName.split('-').join('');
+
+        }
+
+        let myName = 'my-string-name'
+        console.log(camelize(myName));
+
+        // 2. Write a function filterRange(arr, a, b) that gets an array arr, looks for elements with values higher or equal to a and lower or equal to b and return a result as an array. The function should not modify the array. It should return the new array.
+
+        function filterRange(arr, a, b) {
+            console.log(
+                arr.filter(function (item) {
+                    return item >= a && item <= b
+                })
+            );
+
+        }
+
+        let defArr = [5, 3, 8, 1];
+        filterRange(defArr, 1, 4)
+
+
+
+
+    </script>
+</body>
+
+</html>
