@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list example</title>
+    <style>
+        li {
+            margin-bottom: 10px;
+        }
+
+        li button {
+            font-size: 12px;
+            margin-left: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>My shopping list</h1>
+
+    <form>
+        <label for="item">Enter a new item:</label>
+        <input type="text" name="item" id="item">
+        <button id="addItem">Add item</button>
+    </form>
+
+    <ul>
+
+    </ul>
+
+    <script>
+        let inputItem = document.querySelector("input")
+        let button = document.querySelector("#addItem")
+        let listContainer = document.querySelector("ul")
+
+        function addItem() {
+            let listItem = document.createElement("li")
+            let deleteBtn = document.createElement("button")
+            deleteBtn.textContent = "delete"
+            listItem.textContent = inputItem.value
+            listContainer.appendChild(listItem)
+            listContainer.appendChild(deleteBtn)
+
+            deleteBtn.addEventListener("click", ()=>{
+                listContainer.removeChild (listItem)
+                listContainer.removeChild (deleteBtn)
+            })
+
+        }
+
+
+        button.addEventListener("click", function (e) {
+            e.preventDefault() // to stop form submission, since it's a form
+            addItem()
+            inputItem.value = ''
+            inputItem.focus()
+        })
+
+    </script>
+</body>
+
+</html>

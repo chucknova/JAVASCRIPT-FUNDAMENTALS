@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation & Events</title>
+</head>
+
+<body>
+    <div id="container">
+        <div class="display"></div>
+        <div class="controls"></div>
+        <button id="btn">CLICK ME</button>
+
+        <button id="one">Click Me</button>
+        <button id="two">Click Me</button>
+        <button id="three">Click Me</button>
+
+    </div>
+
+
+    <script>
+        let container = document.querySelector("#container"); // returns a reference to the first match of selector.
+        let containerAll = document.querySelectorAll("#container") // returns a “NodeList” containing references to all of the matches of the selectors.
+
+        console.log(container);
+
+
+        //DOM methods
+
+        // 1. Element creation
+        let div = document.createElement('div')
+        console.log(div);
+
+        // 2. Append Elements
+        console.log(document.querySelector("#container").append(document.querySelector(".controls")));
+        console.log(document.querySelector("#container").appendChild(document.querySelector(".display")));
+
+        // adding inline styleß
+        div.style.backgroundColor = 'red';
+
+        // 3. working with classes
+        div.classList.add("drake")
+        div.classList.add("ross")
+        div.classList.toggle("ross")
+        console.log(div);
+
+
+        let newDiv = document.createElement("div")
+        newDiv.classList.add("help-text")
+        newDiv.textContent = "Don't type in numbers yet"
+
+        container.appendChild(newDiv)
+
+        // a <p> with red text that says “Hey I’m red!”
+        let redText = document.createElement("p");
+        redText.textContent = "Hey, I'm red"
+        redText.style.color = "red";
+
+        container.appendChild(redText)
+
+        // an <h3> with blue text that says “I’m a blue h3!”
+        let blueText = document.createElement("h3");
+        blueText.textContent = "I'm a blue h3";
+        blueText.style.color = "blue"
+
+        container.appendChild(blueText)
+
+        //a <div> with a black border and pink background color with the following elements inside of it:
+        // another <h1> that says “I’m in a div” and a <p> that says “ME TOO!”
+
+        let blackDiv = document.createElement("div")
+        blackDiv.style.border = "solid 20px"
+        blackDiv.style.borderColor = "black"
+        blackDiv.style.backgroundColor = "pink"
+
+        let header1 = document.createElement("h1")
+        header1.classList.add("header1")
+        header1.textContent = "I am a div"
+
+        let paragraph1 = document.createElement("p")
+        paragraph1.classList.add("paragraph1")
+        paragraph1.textContent = "ME TOO"
+
+        blackDiv.appendChild(header1)
+        blackDiv.appendChild(paragraph1)
+
+        container.appendChild(blackDiv)
+
+
+
+
+
+
+
+
+
+        //EVENTS
+        //Starting with event listeners: attaching event listeners to the DOM nodes in your JavaScript.
+
+        let btn = document.querySelector("#btn")
+
+        function alertFunction() {
+            alert("You clicked me")
+        }
+    
+
+        btn.addEventListener("click", alertFunction);
+
+        let buttons = document.querySelectorAll("button")
+
+        //Attaching listeners to groups of nodes
+        
+        buttons.forEach(function(button) {
+            button.addEventListener("click", function(button) {
+                console.log(button.target.id);
+                
+            })
+        })
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

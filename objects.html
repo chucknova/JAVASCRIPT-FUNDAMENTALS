@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+
+<body>
+    <script>
+        let user = {
+            name: "Temiloluwa",
+            age: 20,
+            "likes-breast": true,
+            "likes-ass": false,
+            hobbies: ["music", "football", "bombing"],
+            others: {
+                greenflags: "everything",
+                redFlags: "no red flags"
+            }
+        }
+
+        console.log(user);
+
+        for (const key in user) {
+            if (!Object.hasOwn(user, key)) continue;
+            
+            const element = user[key];
+            console.log(element);
+            
+        }
+        
+    </script>
+</body>
+
+</html>

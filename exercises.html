@@ -45,13 +45,28 @@
                     return item >= a && item <= b
                 })
             );
-
         }
 
         let defArr = [5, 3, 8, 1];
         filterRange(defArr, 1, 4)
 
+        // 3. Write a function filterRangeInPlace(arr, a, b) that gets an array arr and removes from it all values except those that are between a and b. The test is: a ≤ arr[i] ≤ b.
+        function filterRangeInPlace(arr, a, b) {
+            console.log(
+                arr.filter(function (item) {
+                    return item >= a && item <= b
+                }).sort()
+            );
+        }
 
+        let defArr2 = [5, 3, 8, 1, 4, 9, 6];
+        filterRangeInPlace(defArr2, 1, 5)
+
+        // 4. sort in decreasing order
+        let arrDec = [5, 2, 1, -10, 8];
+        console.log(arrDec.sort((a,b) => b - a));
+        
+        
 
 
     </script>
