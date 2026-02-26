@@ -221,76 +221,105 @@
     let expression = document.querySelector('#expression')
     let resultDisplay = document.querySelector('#result')
     let operatorExists = false
-    let lhs = ''
     let rhs = ''
     let operatorSign = null
-    let finalResult = 0
+    let finalResult = ''
     let numWasClicked = false
     let isTogglePositive = true
 
     function toggleSign() {
-        if (isTogglePositive) {
-            lhs = parseFloat(lhs) * -1
-            console.log (lhs)
-            console.log('LHS: ' + lhs + 'RHS: ' + rhs);
-            isTogglePositive = false
-            
-        }
-        else {
-            lhs = parseFloat(lhs) * 1
-            console.log (lhs)
-            console.log('LHS: ' + lhs + 'RHS: ' + rhs);
-            isTogglePositive = true
+        if (!numWasClicked) {
+            if (isTogglePositive) {
+                finalResult = parseFloat(finalResult) * -1
+                console.log(finalResult)
+                resultDisplay.textContent = finalResult
+                isTogglePositive = false
+            }
+            else {
+                finalResult = parseFloat(finalResult) * -1
+                console.log(finalResult)
+                resultDisplay.textContent = finalResult
+                isTogglePositive = true
+            }
+        } else {
+            if (isTogglePositive) {
+                rhs = parseFloat(rhs) * -1
+                console.log(rhs)
+                resultDisplay.textContent = finalResult + operatorSign + rhs
+                isTogglePositive = false
+
+            }
+            else {
+                rhs = parseFloat(rhs) * -1
+                console.log(rhs)
+                resultDisplay.textContent = finalResult + operatorSign + rhs
+                isTogglePositive = true
+            }
         }
     }
 
     function num(value) {
         if (!numWasClicked) {
-            lhs += value;
-
-
+            finalResult += value;
+            console.log(finalResult);
+            resultDisplay.textContent = finalResult
         }
         else {
             rhs += value
+            console.log(rhs);
+            resultDisplay.textContent = finalResult + operatorSign + rhs
+
 
         }
     }
+
 
     function setOp(operator) {
         if (!operatorExists) {
             operatorSign = operator
             console.log(operatorSign);
+            resultDisplay.textContent = finalResult + operatorSign
             numWasClicked = true
             operatorExists = true
         } else {
             operatorSign = operator
             console.log(operatorSign);
-
         }
 
     }
 
     function equals() {
         if (operatorSign === '+') {
-            finalResult = parseFloat(lhs) + parseFloat(rhs)
+            finalResult = parseFloat(finalResult) + parseFloat(rhs)
         }
         if (operatorSign === '-') {
-            finalResult = parseFloat(lhs) - parseFloat(rhs)
+            finalResult = parseFloat(finalResult) - parseFloat(rhs)
         }
         if (operatorSign === '*') {
-            finalResult = parseFloat(lhs) * parseFloat(rhs)
+            finalResult = parseFloat(finalResult) * parseFloat(rhs)
         }
         if (operatorSign === '/') {
-            finalResult = parseFloat(lhs) / parseFloat(rhs)
+            finalResult = parseFloat(finalResult) / parseFloat(rhs)
         }
         if (operatorSign === '%') {
             rhs = null
-            finalResult = parseFloat(lhs) / 100
+            finalResult = parseFloat(finalResult) / 100
         }
 
         console.log(finalResult);
+        resultDisplay.textContent = finalResult
+        operatorExists = false
+        rhs = ''
+        operatorSign = null
+        numWasClicked = false
+        isTogglePositive = true
 
+    }
 
+    function clearAll() {
+        finalResult = ''
+        resultDisplay.textContent = finalResult
+        
     }
 
 
