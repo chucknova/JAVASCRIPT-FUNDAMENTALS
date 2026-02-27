@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Destructuring is extracting values from arrays and objects and assigning them to a variable in a convenient way
+
+        // Example 1: SWAPPING THE VALUE OF TWO VARIABLES
+        let a = 1;
+        let b = 2;
+
+        [a, b] = [b, a]
+
+        console.log(a); console.log(b);
+
+        // Example 2: SWAPPING TWO ELEMENTS IN AN ARRAY
+        const colors = ['red', 'green', 'orange', 'black', 'white'];
+
+        [colors[0], colors[4]] = [colors[4], colors[0]];
+
+        console.log(colors);
+
+
+        // Example 3: ASSIGNING ARRAY ELEMENTS TO VARIABLES
+        const [firstColor, secondColor, thirdColor, ...extraColors] = colors
+        console.log(firstColor, secondColor, thirdColor, extraColors);
+
+        //...extraColors returns the remaining items in an array as an array
+
+        // Example 4: EXTRACTING VALUES FROM OBJECTS
+        let user1 = {
+            name: "Temiloluwa",
+            age: 20,
+            job: 'student',
+            hobbies: ["music", "football", "bombing"],
+            others: {
+                greenflags: "everything",
+                redFlags: "no red flags"
+            }
+        }
+
+        let user2 = {
+            name: "Spongebob",
+            age: 30,
+            job: 'frycook',
+            hobbies: ["cooking", "petting", "helping"],
+            others: {
+                greenflags: "kind",
+                redFlags: "annoying"
+            }
+        }
+
+        const { name, age, job, hobbies, others: { greenflags } } = user1
+        console.log(greenflags);
+
+        // Example 5: DESTRUCTURE IN FUNCTION PARAMETERS
+        function displayUser({ name, age, job, hobbies }) {
+            console.log(`name: ${name}`);
+            console.log(`age: ${age}`);
+            console.log(`job: ${job}`);
+            console.log(`hobbies: ${hobbies}`);
+
+        }
+
+        displayUser(user1)
+
+
+
+        const numbers = [10, 20, 30];
+        //extracting 20
+
+        const [, second] = numbers
+        console.log(second);
+
+        const user = {
+            name: "Ada",
+            location: {
+                city: "Abuja"
+            }
+        };
+
+        //extract city
+
+        const { location: { city } } = user
+        console.log(city);
+
+        const product = {
+            title: "iPhone",
+            price: 900,
+            inStock: true
+        };
+
+        const {title, price, inStock} = product
+        console.log(title, price, inStock);
+
+    </script>
+</body>
+
+</html>

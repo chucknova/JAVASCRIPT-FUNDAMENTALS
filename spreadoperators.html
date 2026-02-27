@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let oldArr = ['red', 'orange', 'green']
+        let newArr = [...oldArr, 'yellow', 'blue', 'indigo', 'violet'] //spread the old array into the new array and add new items to the new array
+
+        console.log(newArr);
+
+
+        //EXERCISE 1 — Add a new task
+        const tasks = ["design", "code"];
+        const newTasks = [...tasks, 'test']
+        console.log(newTasks);
+
+        //EXERCISE 2 — Update only the email
+        const user = { name: "Ada", email: "a@mail.com" };
+        const updateUser = { ...user, email: "adaamarachi@gmail.com" }
+        console.log(updateUser);
+
+        //EXERCISE 3 - Update nested city
+        const user2 = {
+            name: "Ada",
+            address: {
+                city: "Lagos"
+            }
+        };
+
+        const updateUser2 = {...user2, address:{
+            ...user2.address,
+            city: "New York"
+            
+        }}
+        console.log(updateUser2);
+        
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // A Closure is a function defined inside another function, 
+        // the inner function has access to the variables and scope of the outer function. 
+        // It allows for private variables and state maintenance. 
+        // Used frequently in JS Frameworks: React, Vue, and Angular
+
+        //EXAMPLE 1: Basic Explanation
+
+        function outer() {
+            let message = 'Hello'
+
+            function inner() {
+                console.log(message);
+            }
+
+            inner()
+        }
+
+        outer()
+
+
+        //EXAMPLE 2: State Maintenance with counter program
+        function createCounter() {
+            let count = 0
+
+            function increment() {
+                count++
+                console.log(`Count has been increased by ${count}`);
+            }
+
+            function getCount() {
+                return (count) // it stores count in memory here
+            }
+
+            function addCountwith20(params) {
+                count + 20
+                console.log(`${count} added with 20 is ${count + 20}`);
+
+            }
+
+            return { increment, getCount, addCountwith20 }
+        }
+
+        let counter = createCounter();
+        counter.increment()
+        counter.addCountwith20()
+
+        counter.increment()
+        counter.addCountwith20()
+
+        counter.increment()
+        counter.addCountwith20()
+
+        counter.increment()
+        counter.addCountwith20()
+
+        counter.increment()
+        counter.addCountwith20()
+
+        counter.increment()
+        counter.addCountwith20()
+
+        console.log(`Current count is at ${counter.getCount()}`);
+
+
+        //EXAMPLE 3: State Maintenance with game score 
+
+        function gameScore() {
+            let score = 0
+
+            function increaseScore(point) {
+                score += point
+                return score
+            }
+
+            function decreaseScore(point) {
+                score -= point
+                return score
+            }
+
+            function getScore() {
+                return score
+            }
+
+            return {increaseScore, decreaseScore, getScore}
+        }
+
+        let game = gameScore()
+        console.log(`Score has been increased by ${game.increaseScore(12)}`);
+        console.log(`Score has been increased by ${game.increaseScore(12)}`);
+        console.log(`Score has been decreased to ${game.decreaseScore(8)}`);
+        console.log(`Score has been increased by ${game.increaseScore(12)}`);
+        console.log(`Current score is ${game.getScore()}`);
+
+        
+
+
+
+
+    </script>
+</body>
+
+</html>

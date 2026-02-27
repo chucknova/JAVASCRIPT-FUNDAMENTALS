@@ -226,6 +226,7 @@
     let finalResult = ''
     let numWasClicked = false
     let isTogglePositive = true
+    let decimalExists = false
 
     function toggleSign() {
         if (!numWasClicked) {
@@ -268,8 +269,6 @@
             rhs += value
             console.log(rhs);
             resultDisplay.textContent = finalResult + operatorSign + rhs
-
-
         }
     }
 
